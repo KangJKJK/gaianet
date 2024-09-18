@@ -796,6 +796,17 @@ else
     info "\033[1;36m>>> 다음으로 LLM 및 지식 베이스와 함께 GaiaNet 노드를 초기화해야 합니다. GaiaNet 노드를 초기화하려면 다음을 수행하십시오:\n>>> * 'source $HOME/$shell_rc' 명령어를 실행하여 현재 셸에서 gaianet CLI 도구를 사용할 수 있게 하십시오;\n>>> * 'gaianet init' 명령어를 실행하여 GaiaNet 노드를 초기화하십시오.\033[0m"
 fi
 
+# CLI 설정
+echo -e "${YELLOW}CLI설정을 진행중입니다.${NC}"
+source /root/.bashrc
 
-echo -e "${GREEN}모든 작업이 완료되었습니다. https://app.pingpong.build/mining/devices 에서 확인하세요${NC}"
+# 노드구동
+echo -e "${YELLOW}GAINET 노드를 설정합니다.${NC}"
+gaianet init
+echo -e "${YELLOW}GAINET 노드를 시작합니다.${NC}"
+gaianet start
+
+echo -e "${YELLOW}URL이 표시되면 해당 URL로 접속해주세요${NC}"
+echo -e "${YELLOW}접속한 URL에서 Chat with this node 버튼을 클릭해주세요${NC}"
+echo -e "${GREEN}모든 작업이 완료되었습니다. 컨트롤 A+D로 스크린을 나가주세요.${NC}"
 echo -e "${GREEN}스크립트 작성자: https://t.me/kjkresearch${NC}"
