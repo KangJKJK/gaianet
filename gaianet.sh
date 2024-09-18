@@ -804,6 +804,6 @@ echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: gaianet init${N
 echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: gaianet start${NC}"
 echo -e "${YELLOW}위 명령어까지 모두 입력하고 나면 URL이 하나가 나올겁니다. 해당 URL로 접속해주세요.${NC}"
 echo -e "${YELLOW}접속한 URL에서 Chat with this node 버튼을 클릭해주세요${NC}"
-echo -e "${GREEN}노드ID는 $subdomain 입니다.${NC}"
+echo -e "${GREEN}노드ID는 $subdomain 입니다. 기억해주세요${NC}"
 echo -e "${GREEN}모든 작업이 완료되었습니다. 컨트롤 A+D로 스크린을 나가주세요.${NC}"
 echo -e "${GREEN}스크립트 작성자: https://t.me/kjkresearch${NC}"
