@@ -798,9 +798,13 @@ fi
 echo -e "${YELLOW}CLI설정을 진행중입니다.${NC}"
 source /root/.bashrc
 
+# 기본 포트 설정
+starting_port=8080  # 시작 포트를 8080으로 설정
+max_port=8090       # 최대 포트 번호
+
 # 포트가 사용 중인지 확인하는 함수
 check_port() {
-    if lsof -i:$1 > /dev/null; then
+    if lsof -i :$1 > /dev/null; then
         return 1  # 포트 사용 중
     else
         return 0  # 포트 사용 가능
@@ -808,19 +812,19 @@ check_port() {
 }
 
 # 포트 확인
-if ! check_port $desired_port; then
-    echo -e "${YELLOW}포트 $desired_port 가 이미 사용 중입니다. 다른 포트를 찾습니다...${NC}"
-    
-    # 포트 변경 로직
-    for ((port=desired_port; port<desired_port+10; port++)); do
-        if check_port $port; then
-            desired_port=$port
-            echo -e "${GREEN}사용 가능한 포트를 찾았습니다: $desired_port${NC}"
-            break
-        fi
-    done
-else
-    echo -e "${GREEN}포트 $desired_port 가 사용 가능합니다.${NC}"
+desired_port=$starting_port
+while [ $desired_port -le $max_port ]; do
+    if check_port $desired_port; then
+        echo -e "${GREEN}사용 가능한 포트를 찾았습니다: $desired_port${NC}"
+        break
+    fi
+    desired_port=$((desired_port + 1))
+done
+
+# 포트가 사용 중인 경우 처리
+if [ $desired_port -gt $max_port ]; then
+    echo -e "${RED}사용 가능한 포트를 찾을 수 없습니다.${NC}"
+    exit 1
 fi
 
 # config.json 파일에서 포트 변경
@@ -829,6 +833,10 @@ sed -i "s/\"llamaedge_port\": \".*\"/\"llamaedge_port\": \"$desired_port\"/" $ga
 # UFW에서 포트 개방
 echo -e "${YELLOW}UFW에서 포트 $desired_port 를 개방합니다...${NC}"
 ufw allow $desired_port/tcp
+
+# 노드 시작
+cd $gaianet_base_dir
+gaianet start
 
 # 노드 시작
 cd $gaianet_base_dir
