@@ -238,11 +238,17 @@ if [ -d "$gaianet_base_dir" ]; then
     fi
 fi
 
-# 필요한 경우 디렉토리 생성
-if [ ! -d "$gaianet_base_dir" ]; then
-    printf "[+] $gaianet_base_dir 디렉토리가 없으므로 생성 중...\n"
-    mkdir -p "$gaianet_base_dir"
+# 디렉토리가 존재하는지 확인
+if [ -d "$gaianet_base_dir" ]; then
+    printf "[+] $gaianet_base_dir 디렉토리가 존재하므로 삭제 중...\n"
+    rm -rf "$gaianet_base_dir"
+    printf "[+] $gaianet_base_dir 디렉토리가 삭제되었습니다.\n"
 fi
+
+# 필요한 경우 디렉토리 생성
+printf "[+] $gaianet_base_dir 디렉토리를 생성 중...\n"
+mkdir -p "$gaianet_base_dir"
+printf "[+] $gaianet_base_dir 디렉토리가 생성되었습니다.\n"
 
 if [ ! -d "$tmp_dir" ]; then
     printf "[+] 임시 디렉토리가 없으므로 생성 중...\n"
