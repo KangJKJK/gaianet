@@ -792,8 +792,6 @@ else
             echo "$cmd" >> $HOME/.bashrc
         fi
     fi
-
-    info "\033[1;36m>>> 다음으로 LLM 및 지식 베이스와 함께 GaiaNet 노드를 초기화해야 합니다. GaiaNet 노드를 초기화하려면 다음을 수행하십시오:\n>>> * 'source $HOME/$shell_rc' 명령어를 실행하여 현재 셸에서 gaianet CLI 도구를 사용할 수 있게 하십시오;\n>>> * 'gaianet init' 명령어를 실행하여 GaiaNet 노드를 초기화하십시오.\033[0m"
 fi
 
 # CLI 설정
@@ -802,7 +800,7 @@ source /root/.bashrc
 
 # 노드구동
 echo -e "${YELLOW}GAINET 노드를 설정합니다.${NC}"
-cd gaianet
+cd /root/gaianet/
 gaianet init
 echo -e "${YELLOW}GAINET 노드를 시작합니다.${NC}"
 gaianet start
