@@ -800,14 +800,11 @@ exist
 echo -e "${YELLOW}CLI설정을 진행중입니다.${NC}"
 source /root/.bashrc
 
-# 노드구동
-echo -e "${YELLOW}GAINET 노드를 설정합니다.${NC}"
-cd "$gaianet_base_dir"
-gaianet init
-echo -e "${YELLOW}GAINET 노드를 시작합니다.${NC}"
-gaianet start
 
-echo -e "${YELLOW}URL이 표시되면 해당 URL로 접속해주세요${NC}"
+echo -e "${YELLOW}설치가 종료되면 해당 명령어를 입력하세요: cd "$gaianet_base_dir"${NC}"
+echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: gaianet init${NC}"
+echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: gaianet start${NC}"
+echo -e "${YELLOW}위 명령어까지 모두 입력하고 나면 URL이 하나가 나올겁니다. 해당 URL로 접속해주세요.${NC}"
 echo -e "${YELLOW}접속한 URL에서 Chat with this node 버튼을 클릭해주세요${NC}"
 echo -e "${GREEN}노드ID는 $subdomain 입니다.${NC}"
 echo -e "${GREEN}모든 작업이 완료되었습니다. 컨트롤 A+D로 스크린을 나가주세요.${NC}"
