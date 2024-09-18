@@ -794,8 +794,6 @@ else
     fi
 fi
 
-exist
-
 # CLI 설정
 echo -e "${YELLOW}CLI설정을 진행중입니다.${NC}"
 source /root/.bashrc
