@@ -31,6 +31,7 @@ ggmlcuda=""
 enable_vector=0
 
 # 색상 정의
+BOLD='\033[1m'
 RED=$'\e[0;31m'
 GREEN=$'\e[0;32m'
 YELLOW=$'\e[0;33m'
@@ -840,7 +841,13 @@ sed -i "s/\"llamaedge_port\": \".*\"/\"llamaedge_port\": \"$desired_port\"/" $ga
 echo -e "${YELLOW}UFW에서 포트 $desired_port 를 개방합니다...${NC}"
 ufw allow $desired_port/tcp
 
-echo -e "${YELLOW}설치가 종료되면 해당 명령어를 입력하세요: cd "$gaianet_base_dir"${NC}"
+# 노드 등록
+echo -e "${BOLD}Gaianet node 설정중...${NC}"
+gaianet info
+echo -e "${YELLOW}해당 사이트로 이동해주세요: https://www.gaianet.ai/setting/nodes${NC}"
+ead -p "메타마스크를 연결 후 Connect New node를 누르시고 설정을 완료해주세요: "
+
+echo -e "${YELLOW}설정이 완료되면 Putty에 해당 명령어를 입력하세요: cd "$gaianet_base_dir"${NC}"
 echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: gaianet init${NC}"
 echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: gaianet start${NC}"
 echo -e "${YELLOW}위 명령어까지 모두 입력하고 나면 URL이 하나가 나올겁니다. 해당 URL로 접속해주세요.${NC}"
