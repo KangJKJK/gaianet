@@ -834,11 +834,6 @@ sed -i "s/\"llamaedge_port\": \".*\"/\"llamaedge_port\": \"$desired_port\"/" $ga
 echo -e "${YELLOW}UFW에서 포트 $desired_port 를 개방합니다...${NC}"
 ufw allow $desired_port/tcp
 
-# 노드 시작
-cd $gaianet_base_dir
-gaianet init
-gaianet start
-
 echo -e "${YELLOW}설치가 종료되면 해당 명령어를 입력하세요: cd "$gaianet_base_dir"${NC}"
 echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: gaianet init${NC}"
 echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: gaianet start${NC}"
