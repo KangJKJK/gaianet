@@ -798,6 +798,42 @@ fi
 echo -e "${YELLOW}CLI설정을 진행중입니다.${NC}"
 source /root/.bashrc
 
+# 포트가 사용 중인지 확인하는 함수
+check_port() {
+    if lsof -i:$1 > /dev/null; then
+        return 1  # 포트 사용 중
+    else
+        return 0  # 포트 사용 가능
+    fi
+}
+
+# 포트 확인
+if ! check_port $desired_port; then
+    echo -e "${YELLOW}포트 $desired_port 가 이미 사용 중입니다. 다른 포트를 찾습니다...${NC}"
+    
+    # 포트 변경 로직
+    for ((port=desired_port; port<desired_port+10; port++)); do
+        if check_port $port; then
+            desired_port=$port
+            echo -e "${GREEN}사용 가능한 포트를 찾았습니다: $desired_port${NC}"
+            break
+        fi
+    done
+else
+    echo -e "${GREEN}포트 $desired_port 가 사용 가능합니다.${NC}"
+fi
+
+# config.json 파일에서 포트 변경
+sed -i "s/\"llamaedge_port\": \".*\"/\"llamaedge_port\": \"$desired_port\"/" $gaianet_base_dir/config.json
+
+# UFW에서 포트 개방
+echo -e "${YELLOW}UFW에서 포트 $desired_port 를 개방합니다...${NC}"
+ufw allow $desired_port/tcp
+
+# 노드 시작
+cd $gaianet_base_dir
+gaianet init
+gaianet start
 
 echo -e "${YELLOW}설치가 종료되면 해당 명령어를 입력하세요: cd "$gaianet_base_dir"${NC}"
 echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: gaianet init${NC}"
