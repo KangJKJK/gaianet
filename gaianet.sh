@@ -836,10 +836,6 @@ ufw allow $desired_port/tcp
 
 # 노드 시작
 cd $gaianet_base_dir
-gaianet start
-
-# 노드 시작
-cd $gaianet_base_dir
 gaianet init
 gaianet start
 
