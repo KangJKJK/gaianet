@@ -800,7 +800,7 @@ source /root/.bashrc
 
 # 노드구동
 echo -e "${YELLOW}GAINET 노드를 설정합니다.${NC}"
-cd /root/gaianet/
+cd "$gaianet_base_dir"
 gaianet init
 echo -e "${YELLOW}GAINET 노드를 시작합니다.${NC}"
 gaianet start
