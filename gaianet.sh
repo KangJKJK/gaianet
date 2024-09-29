@@ -843,6 +843,19 @@ ufw allow $desired_port/tcp
 
 # 노드 등록
 echo -e "${BOLD}Gaianet node 설정중...${NC}"
+echo -e "${YELLOW}만약 오류가 나온다면 명령어를 수동으로 입력하세요: cd "$HOME"${NC}"
+echo -e "${YELLOW}만약 오류가 나온다면 명령어를 수동으로 입력하세요: source /root/.bashrc ${NC}"
+echo -e "${YELLOW}만약 오류가 나온다면 명령어를 수동으로 입력하세요: gaianet info ${NC}"
+echo -e "${YELLOW}노드ID와 디바이스ID를 기억해주세요. ${NC}"
+echo -e "${YELLOW}해당 사이트로 이동해주세요: https://www.gaianet.ai/setting/nodes${NC}"
+echo -e "${YELLOW}메타마스크를 연결 후 Connect New node를 누르시고 설정을 완료해주세요${NC}"
+echo -e "${YELLOW}설정이 완료되면 Putty에 해당 명령어를 입력하세요: cd "$gaianet_base_dir"${NC}"
+echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: gaianet init${NC}"
+echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: gaianet start${NC}"
+echo -e "${YELLOW}위 명령어까지 모두 입력하고 나면 URL이 하나가 나올겁니다. 해당 URL로 접속해주세요.${NC}"
+echo -e "${YELLOW}접속한 URL에서 Chat with this node 버튼을 클릭해주세요${NC}"
+echo -e "${GREEN}모든 작업이 완료되었습니다. 컨트롤 A+D로 스크린을 나가주세요.${NC}"
+echo -e "${GREEN}스크립트 작성자: https://t.me/kjkresearch${NC}"
 cd $HOME
 source /root/.bashrc
 gaianet info
