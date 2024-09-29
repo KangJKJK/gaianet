@@ -843,6 +843,7 @@ ufw allow $desired_port/tcp
 
 # 노드 등록
 echo -e "${BOLD}Gaianet node 설정중...${NC}"
+source /root/.bashrc
 gaianet info
 echo -e "${YELLOW}해당 사이트로 이동해주세요: https://www.gaianet.ai/setting/nodes${NC}"
 ead -p "메타마스크를 연결 후 Connect New node를 누르시고 설정을 완료해주세요: "
