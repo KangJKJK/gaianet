@@ -843,7 +843,7 @@ ufw allow $desired_port/tcp
 
 # 노드 등록
 echo -e "${BOLD}Gaianet node 설정중...${NC}"
-echo -e "${YELLOW}만약 오류가 나온다면 명령어를 수동으로 입력하세요: cd "$gaianet_base_dir"${NC}"
+echo -e "${RED}만약 오류가 나온다면 명령어를 수동으로 입력하세요: cd "$gaianet_base_dir"${NC}"
 echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: source /root/.bashrc ${NC}"
 echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: gaianet init${NC}"
 echo -e "${YELLOW}다음으로 이 명령어를 입력하세요: gaianet start${NC}"
@@ -859,6 +859,7 @@ cd $gaianet_base_dir
 gaianet init
 gaianet start
 gaianet info
+echo -e "${RED}오류가 나지 않았다면 다음 안내문구대로 행동하세요.${NC}"
 echo -e "${YELLOW}노드ID와 디바이스ID를 기억해주세요. ${NC}"
 echo -e "${YELLOW}해당 사이트로 이동해주세요: https://www.gaianet.ai/setting/nodes${NC}"
 echo -e "${YELLOW}메타마스크를 연결 후 Connect New node를 누르시고 설정을 완료해주세요${NC}"
